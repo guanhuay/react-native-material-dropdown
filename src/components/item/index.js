@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import { Button } from '@ui-kitten/components';
+import {Text, TouchableOpacity} from "react-native";
 
 import styles from './styles';
 
@@ -36,13 +36,12 @@ export default class DropdownItem extends PureComponent {
     let { children, style, index, ...props } = this.props;
 
     return (
-      <Button
+      <TouchableOpacity
         {...props}
         style={[styles.container, style]}
-        onPress={this.onPress}
-        appearance='outline'>
-        {children}
-      </Button>
+        onPress={this.onPress}>
+        <Text>{children}</Text>
+      </TouchableOpacity>
     );
   }
 }
