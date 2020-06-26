@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import { Button } from 'react-native-material-buttons';
+import { Button } from '@ui-kitten/components';
 
 import styles from './styles';
 
@@ -38,10 +38,9 @@ export default class DropdownItem extends PureComponent {
     return (
       <Button
         {...props}
-
         style={[styles.container, style]}
         onPress={this.onPress}
-      >
+        appearance='outline'>
         {children}
       </Button>
     );

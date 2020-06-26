@@ -12,8 +12,7 @@ import {
   ViewPropTypes,
   I18nManager,
 } from 'react-native';
-import Ripple from 'react-native-material-ripple';
-import { TextField } from 'react-native-material-textfield';
+import { Text } from '@ui-kitten/components';
 
 import DropdownItem from '../item';
 import styles from './styles';
@@ -504,50 +503,40 @@ export default class Dropdown extends PureComponent {
       String(title);
 
     return (
-      <TextField
-        label=''
-        labelHeight={dropdownOffset.top - Platform.select({ ios: 1, android: 2 })}
-
-        {...props}
-
-        value={title}
-        editable={false}
-        onChangeText={undefined}
-        renderAccessory={renderAccessory}
-      />
+      <Text{...props}>{title}</Text>
     );
   }
 
-  renderRipple() {
-    let {
-      baseColor,
-      rippleColor = baseColor,
-      rippleOpacity,
-      rippleDuration,
-      rippleCentered,
-      rippleSequential,
-    } = this.props;
-
-    let { bottom, ...insets } = this.rippleInsets();
-    let style = {
-      ...insets,
-
-      height: this.itemSize() - bottom,
-      position: 'absolute',
-    };
-
-    return (
-      <Ripple
-        style={style}
-        rippleColor={rippleColor}
-        rippleDuration={rippleDuration}
-        rippleOpacity={rippleOpacity}
-        rippleCentered={rippleCentered}
-        rippleSequential={rippleSequential}
-        ref={this.updateRippleRef}
-      />
-    );
-  }
+  // renderRipple() {
+  //   let {
+  //     baseColor,
+  //     rippleColor = baseColor,
+  //     rippleOpacity,
+  //     rippleDuration,
+  //     rippleCentered,
+  //     rippleSequential,
+  //   } = this.props;
+  //
+  //   let { bottom, ...insets } = this.rippleInsets();
+  //   let style = {
+  //     ...insets,
+  //
+  //     height: this.itemSize() - bottom,
+  //     position: 'absolute',
+  //   };
+  //
+  //   return (
+  //     <Ripple
+  //       style={style}
+  //       rippleColor={rippleColor}
+  //       rippleDuration={rippleDuration}
+  //       rippleOpacity={rippleOpacity}
+  //       rippleCentered={rippleCentered}
+  //       rippleSequential={rippleSequential}
+  //       ref={this.updateRippleRef}
+  //     />
+  //   );
+  // }
 
   renderAccessory() {
     let { baseColor: backgroundColor } = this.props;
@@ -729,7 +718,6 @@ export default class Dropdown extends PureComponent {
         <TouchableWithoutFeedback {...touchableProps}>
           <View pointerEvents='box-only'>
             {this.renderBase(props)}
-            {this.renderRipple()}
           </View>
         </TouchableWithoutFeedback>
 
